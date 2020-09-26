@@ -5,3 +5,9 @@
 #app {
     font-family: 'Montserrat';
 }
+
+.btn-success,
+.navbar .badge-success {
+    background: #4eb888;
+    border: none;
+}
