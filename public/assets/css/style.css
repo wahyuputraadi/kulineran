@@ -22,3 +22,20 @@
 #card-product .card-img-top {
     border-radius: 15px 15px 0px 0px;
 }
+
+
+/* food details */
+
+.food-detail .breadcrumb {
+    background-color: transparent;
+    padding: 0;
+}
+
+.food-detail .breadcrumb-item.active {
+    font-weight: bold;
+    color: black;
+}
+
+.img-fluid {
+    border-radius: 15px;
+}

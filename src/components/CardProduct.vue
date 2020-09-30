@@ -12,7 +12,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ product.nama }}</h5>
               <p class="card-text">Harga : Rp {{ product.harga }}</p>
-              <router-link to="/pesanan" class="btn btn-success"
+              <router-link :to="'/foods/'+ product.id" class="btn btn-success"
                 ><b-icon-cart></b-icon-cart> Pesan
               </router-link>
             </div>
