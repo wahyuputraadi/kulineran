@@ -3,8 +3,22 @@
       <!-- <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> -->
     <router-view/>
+  <Footer/>
   </div>
 </template>
+
+<script>
+import Footer from "@/components/Footer.vue";
+
+export default {
+  name: "App",
+  components: {
+    Footer,
+  },
+}
+</script>
+
+
 
 <style>
 

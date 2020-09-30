@@ -11,3 +11,14 @@
     background: #4eb888;
     border: none;
 }
+
+
+/* card product */
+
+#card-product .card {
+    border-radius: 15px;
+}
+
+#card-product .card-img-top {
+    border-radius: 15px 15px 0px 0px;
+}
