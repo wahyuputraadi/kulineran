@@ -35,15 +35,31 @@
             <h4>
               Harga : <strong>Rp. {{ product.harga }}</strong>
             </h4>
-            <div class="form-group mt-4">
-              <label for="jumlah_pemesanan">Jumlah Pesan</label>
-              <input type="number" class="form-control" />
-            </div>
-            <div class="form-group">
-              <label for="keterangan">Keterangan</label>
-              <textarea class="form-control" placeholder="Keterangan seperti : Pedas, Nasi Setengah" />
-              <router-link class="btn btn-success mt-3" to="/"><b-icon-cart></b-icon-cart> Pesan</router-link>
-            </div>
+            <form class="mt-4" v-on:submit.prevent>
+              <div class="form-group">
+                <label for="jumlah_pemesanan">Jumlah Pesan</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  v-model="pesan.jumlah_pesanan"
+                />
+              </div>
+              <div class="form-group">
+                <label for="keterangan">Keterangan</label>
+                <textarea
+                  v-model="pesan.keterangan"
+                  class="form-control"
+                  placeholder="Keterangan seperti : Pedas, Nasi Setengah"
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-success mt-3"
+                @click="pemesanan"
+              >
+                <b-icon-cart></b-icon-cart> Pesan
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -62,12 +78,28 @@ export default {
   },
   data() {
     return {
-      product: [],
+      product: {},
+      pesan: {},
     };
   },
   methods: {
     setProduct(data) {
       this.product = data;
+    },
+    pemesanan() {
+      // console.log(this.pesan);
+      this.pesan.products = this.product;
+      axios
+        .post("http://localhost:3000/keranjangs", this.pesan)
+        .then(() => {
+          this.$toast.success("Sukses Masuk Keranjang", {
+           type: 'success',
+           position: 'top',
+           duration: '2000',
+           dismissible: true
+          });
+        })
+        .catch((error) => console.log(error));
     },
   },
   mounted() {
