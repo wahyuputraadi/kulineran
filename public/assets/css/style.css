@@ -26,12 +26,14 @@
 
 /* food details */
 
-.food-detail .breadcrumb {
+.food-detail .breadcrumb,
+.keranjang .breadcrumb {
     background-color: transparent;
     padding: 0;
 }
 
-.food-detail .breadcrumb-item.active {
+.food-detail .breadcrumb-item.active,
+.keranjang .breadcrumb-item.active {
     font-weight: bold;
     color: black;
 }
