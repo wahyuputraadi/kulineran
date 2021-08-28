@@ -4,7 +4,7 @@
       <div class="container">
           <div class="row">
               <div class="col">
-                  2020 Copyright IDSyntag Solutions
+                  2021 - PT <strong>Pinjem Teknologi Indonesia</strong>
               </div>
           </div>
       </div>

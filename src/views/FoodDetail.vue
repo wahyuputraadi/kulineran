@@ -23,23 +23,23 @@
         <div class="row mt-3">
           <div class="col-lg-6">
             <img
-              :src="'/assets/img/' + product.gambar"
+              src="/assets/img/sate-ayam.jpg" 
               class="img-fluid shadow"
             />
           </div>
           <div class="col-md-6">
             <h2>
-              <strong>{{ product.nama }}</strong>
+              <strong>sate ayam</strong>
             </h2>
             <hr />
             <h4>
-              Harga : <strong>Rp. {{ product.harga }}</strong>
+              Harga : <strong>Rp. 16.000</strong>
             </h4>
-            <form class="mt-4" v-on:submit.prevent>
+            <form class="mt-4" >
               <div class="form-group">
                 <label for="jumlah_pemesanan">Jumlah Pesan</label>
                 <input
-                  v-model="pesan.jumlah_pesanan"
+                 
                   type="number"
                   class="form-control"
                 />
@@ -47,13 +47,13 @@
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
                 <textarea
-                  v-model="pesan.keterangan"
+                 
                   class="form-control"
                   placeholder="Keterangan seperti : Pedas, Nasi Setengah"
                 />
               </div>
               <button
-                @click="pemesanan"
+               
                 type="submit"
                 class="btn btn-success mt-3"
               >
@@ -69,57 +69,11 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import axios from "axios";
 
 export default {
   name: "FoodDetail",
   components: {
     Navbar,
-  },
-  data() {
-    return {
-      product: {},
-      pesan: {},
-    };
-  },
-  methods: {
-    setProduct(data) {
-      this.product = data;
-    },
-    pemesanan() {
-      // console.log(this.pesan);
-      if (this.pesan.jumlah_pesanan) {
-        this.pesan.products = this.product;
-        axios
-          .post("http://localhost:3000/keranjangs", this.pesan)
-          .then(() => {
-            // push kedalam keranjang
-            this.$router.push({ path: "/keranjang" });
-
-            // pesan
-            this.$toast.success("Sukses Masuk Keranjang", {
-              type: "success",
-              position: "top",
-              duration: 2000,
-              dismissible: true,
-            });
-          })
-          .catch((error) => console.log(error));
-      } else {
-        this.$toast.error("Jumlah pesanan harus diisi !", {
-          type: "error",
-          position: "top",
-          duration: 2000,
-          dismissible: true,
-        });
-      }
-    },
-  },
-  mounted() {
-    axios
-      .get("http://localhost:3000/products/" + this.$route.params.id)
-      .then((response) => this.setProduct(response.data))
-      .catch((error) => console.log(error));
   },
 };
 </script>

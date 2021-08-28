@@ -6,11 +6,46 @@
     font-family: 'Montserrat';
 }
 
+#app .logo-kurir {
+    width: 120px;
+    height: auto;
+}
+
 .btn-success,
 .navbar .badge-success {
     background: #4eb888;
     border: none;
 }
+
+
+/* button */
+
+#app .btn-outline-secondary {
+    border: white;
+}
+
+#app .btn-outline-secondary:hover {
+    background-color: #FFA000;
+    color: white;
+    border: white;
+}
+
+.btn-success {
+    background-color: #7A4BC7;
+}
+
+.btn-success:hover {
+    background-color: #FFA000;
+}
+
+
+/* hero */
+
+
+/* #hero {
+    margin-top: 80px;
+    margin-bottom: 80px;
+} */
 
 
 /* card product */

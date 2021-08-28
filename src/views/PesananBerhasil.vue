@@ -4,12 +4,18 @@
    <div class="container">
      <div class="row justify-content-center mt-5">
        <div class="col text-center">
-         <img src="/assets/img/menunggu.png" width="300" alt="">
-         <h2><strong>Sukses!!</strong></h2>
-         <h4>Pesanan Anda Segera Diproses <br> Selamat Menunggu</h4>
+         <img  src="/assets/img/love_burger.png" width="200" alt="">
+         <h2 class="mt-4"><strong>Sukses!!</strong></h2>
+         <h4>Permintaan Anda Segera Diproses <br> </h4>
+         <p> Silahkan tunggu konfirmasi dari kami </p>
        </div>
      </div>
-   </div>
+        <div class="row mt-3 justify-content-center">
+          <div class="col-lg-4">
+              <router-link class="btn btn-success form-control shadow" to="/">Kembali ke halaman utama <b-icon-arrow-right></b-icon-arrow-right></router-link>
+          </div>
+        </div>
+    </div>
   </div>
 </template>
 

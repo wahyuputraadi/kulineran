@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
       <div class="container">
-        <a class="navbar-brand" href="#"> <strong>Kuliner</strong>n</a>
+        <!-- <a class="navbar-brand" href="/assets/img/logo-pinjem-kurir.png"> </a> -->
+        <img class="logo-kurir m-2" src="/assets/img/logo.png" alt="" >
         <button
           class="navbar-toggler"
           type="button"
@@ -17,20 +18,22 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item ml-4">
               <router-link class="nav-link" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/foods">Foods</router-link>
+              <router-link class="nav-link" to="/foods">#MitraPinjemKurir</router-link>
+              
             </li>
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link class="nav-link" to="/keranjang"
                 >Keranjang <b-icon-bag></b-icon-bag>
-                <span class="badge badge-success ml-2">{{ updateKeranjang ? updateKeranjang.length : jumlah_pesanan.length}}</span></router-link
+                <span class="badge badge-success ml-2">1</span></router-link
               >
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -39,28 +42,8 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Navbar",
-  data() {
-    return {
-      jumlah_pesanan: []
-    }
-  },
-  // membuat data yang di oper daridata lain
-  props: ['updateKeranjang'],
-  methods: {
-    setJumlah(data) {
-      this.jumlah_pesanan = data
-    }
-  },
-  mounted() {
-     axios
-      .get("http://localhost:3000/keranjangs")
-      .then((response) => this.setJumlah(response.data))
-      .catch((error) => console.log(error));
-  }
 };
 </script>
 

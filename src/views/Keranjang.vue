@@ -22,18 +22,18 @@
       <div class="row mt-4">
         <div class="col">
           <h2>Keranjang <strong>Saya</strong></h2>
-          <div class="table-responsive mt-5">
+          <div v-if="refresh" class="table-responsive mt-5">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Foto</th>
-                  <th scope="col">Makanan</th>
-                  <th scope="col">Keterangan</th>
-                  <th scope="col">Jumlah</th>
-                  <th scope="col">Harga</th>
-                  <th scope="col">Total Harga</th>
-                  <th scope="col">Hapus</th>
+                <th scope="col">#</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Makanan</th>
+                <th scope="col">Keterangan</th>
+                <th scope="col">Jumlah</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Total Harga</th>
+                <th scope="col">Hapus</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,7 +67,7 @@
                   </td>
                   <td align="center" class="text-danger">
                     <b-icon-trash
-                      @click="hapusKeranjang(keranjang.id)"
+                     
                     ></b-icon-trash>
                   </td>
                 </tr>
@@ -88,18 +88,18 @@
       </div>
       <div class="row justify-content-end">
         <div class="col-md-4">
-          <form class="mt-4" v-on:submit.prevent>
+          <form class="mt-4" >
             <div class="form-group">
-              <label for="nama">Nama :</label>
-              <input v-model="pesan.nama" type="text" class="form-control" />
+              <label >Nama :</label>
+              <input type="text" class="form-control" />
             </div>
             <div class="form-group">
-              <label for="noMeja">Nomor Meja</label>
-              <input v-model="pesan.noMeja" type="text" class="form-control" />
+              <label>Nomor Meja</label>
+              <input type="text" class="form-control" />
             </div>
 
             <button
-              @click="checkout"
+            
               type="submit"
               class="btn btn-success mt-3 float-right"
             >
@@ -114,7 +114,7 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import axios from "axios";
+
 
 export default {
   name: "Keranjang",
@@ -122,97 +122,10 @@ export default {
     Navbar,
   },
   data() {
-    return {
-      keranjangs: [],
-      pesan: {},
-    };
+   
   },
-  methods: {
-    setKeranjangs(data) {
-      this.keranjangs = data;
-    },
-    hapusKeranjang(id) {
-      axios
-        .delete("http://localhost:3000/keranjangs/" + id)
-        .then(() => {
-          this.$toast.error("Sukses hapus keranjang", {
-            type: "error",
-            position: "top",
-            duration: 2000,
-            dismissible: true,
-          });
-
-          // update data keranjang
-          axios
-            .get("http://localhost:3000/keranjangs")
-            .then((response) => this.setKeranjangs(response.data))
-            .catch((error) => console.log(error));
-        })
-        .catch((error) => console.log(error));
-    },
-    checkout() {
-      if (this.pesan.nama && this.pesan.noMeja && this.keranjangs) {
-        // pesan
-        this.pesan.keranjangs = this.keranjangs;
-        axios
-          .post("http://localhost:3000/pesanans", this.pesan)
-          .then(() => {
-            // hapus semua keranjang
-            this.keranjangs.map(function (item) {
-              axios
-                .delete("http://localhost:3000/keranjangs/" + item.id)
-                .then(() => {
-                  this.$toast.error("Sukses hapus keranjang", {
-                    type: "error",
-                    position: "top",
-                    duration: 2000,
-                    dismissible: true,
-                  });
-
-                  // update data keranjang
-                  axios
-                    .get("http://localhost:3000/keranjangs")
-                    .then((response) => this.setKeranjangs(response.data))
-                    .catch((error) => console.log(error));
-                })
-                .catch((error) => console.log(error));
-            });
-
-            // push kedalam keranjang
-            this.$router.push({ path: "/pesanan-berhasil" });
-
-            // pesan
-            this.$toast.success("Sukses Dipesan", {
-              type: "success",
-              position: "top",
-              duration: 2000,
-              dismissible: true,
-            });
-          })
-          .catch((error) => console.log(error));
-      } else {
-        this.$toast.error("Nama & No Meja harus diisi", {
-          type: "error",
-          position: "top",
-          duration: 2000,
-          dismissible: true,
-        });
-      }
-    },
-  },
-  mounted() {
-    axios
-      .get("http://localhost:3000/keranjangs")
-      .then((response) => this.setKeranjangs(response.data))
-      .catch((error) => console.log(error));
-  },
-  computed: {
-    totalHarga() {
-      return this.keranjangs.reduce(function (items, data) {
-        return items + data.products.harga * data.jumlah_pesanan;
-      }, 0);
-    },
-  },
+ 
+  
 };
 </script>
 

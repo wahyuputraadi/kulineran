@@ -5,6 +5,8 @@ import Foods from '../views/Foods.vue'
 import FoodDetail from '../views/FoodDetail.vue'
 import Keranjang from '../views/Keranjang.vue'
 import PesananBerhasil from '../views/PesananBerhasil.vue'
+import DaftarMitra from '../views/DaftarMitra.vue'
+import ProductMitra from '../views/ProductMitra.vue'
 
 Vue.use(VueRouter)
 
@@ -32,6 +34,16 @@ const routes = [{
         path: '/pesanan-berhasil',
         name: 'PesananBerhasil',
         component: PesananBerhasil
+    },
+    {
+        path: '/daftar-mitra',
+        name: 'DaftarMitra',
+        component: DaftarMitra
+    },
+    {
+        path: '/product-mitra',
+        name: 'ProductMitra',
+        component: ProductMitra
     },
 
     {
